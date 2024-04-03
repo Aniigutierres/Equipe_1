@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\Equipe 1\\API\\api1\\api1.csproj": {}
+    "C:\\Projetos\\Equipe_1\\API\\api1\\api1.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\Equipe 1\\API\\api1\\api1.csproj": {
+    "C:\\Projetos\\Equipe_1\\API\\api1\\api1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\Equipe 1\\API\\api1\\api1.csproj",
+        "projectUniqueName": "C:\\Projetos\\Equipe_1\\API\\api1\\api1.csproj",
         "projectName": "api1",
-        "projectPath": "C:\\Projetos\\Equipe 1\\API\\api1\\api1.csproj",
+        "projectPath": "C:\\Projetos\\Equipe_1\\API\\api1\\api1.csproj",
         "packagesPath": "C:\\Users\\laura.rocha\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\Equipe 1\\API\\api1\\obj\\",
+        "outputPath": "C:\\Projetos\\Equipe_1\\API\\api1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\laura.rocha\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -50,6 +50,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "mysql.data": {
+              "target": "Package",
+              "version": "[8.3.0, )"
             }
           },
           "imports": [
