@@ -2,3 +2,14 @@
 API/api1/bin
 API/api1/obj
 
+API/api1/obj/api1.csproj.nuget.dgspec.json
+API/api1/obj/api1.csproj.nuget.g.props
+API/api1/obj/Debug/net8.0/api1.AssemblyInfo.cs
+API/api1/obj/Debug/net8.0/api1.AssemblyInfoInputs.cache
+API/api1/obj/Debug/net8.0/api1.assets.cache
+API/api1/obj/Debug/net8.0/api1.csproj.AssemblyReference.cache
+API/api1/obj/Debug/net8.0/api1.csproj.CoreCompileInputs.cache
+API/api1/obj/Debug/net8.0/api1.GeneratedMSBuildEditorConfig.editorconfig
+API/api1/obj/Debug/net8.0/api1.sourcelink.json
+API/api1/obj/project.assets.json
+API/api1/obj/project.nuget.cache
