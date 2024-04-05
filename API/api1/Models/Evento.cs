@@ -8,19 +8,19 @@ namespace api.Models
 {
     public class Evento
     {
-        [Column("id_evento")]
+        [Column("id_eventos")]
         public int IdEvento { get; set; }
  
         [Column("descricao")]
         public string Descricao { get; set; }
  
-        [Column("total_ingresso")]
+        [Column("total_ingressos")]
         public int TotalIngresso { get; set; }
  
         [Column("data_evento")]
         public DateTime DataEvento { get; set; }
  
-        [Column("imagem_Url")]
+        [Column("imagem_url")]
         public string? ImagemUrl { get; set; }
  
         [Column("local")]

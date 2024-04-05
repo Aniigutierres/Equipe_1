@@ -19,7 +19,7 @@ namespace api.DAO
         public List<Evento> GetAll()
         {
             List<Evento> eventos = new List<Evento>();
-            string query = "SELECT * FROM evento";
+            string query = "SELECT * FROM eventos";
  
             try
             {
@@ -30,7 +30,7 @@ namespace api.DAO
                     while (reader.Read())
                     {
                         Evento evento = new Evento();
-                        evento.IdEvento = reader.GetInt32("id_evento");
+                        evento.IdEvento = reader.GetInt32("id_eventos");
                         evento.Descricao = reader.GetString("descricao");
                         evento.TotalIngresso = reader.GetInt32("total_ingressos");
                         evento.DataEvento = reader.GetDateTime("data_evento");
@@ -61,7 +61,7 @@ namespace api.DAO
         public Evento GetId(int id)
         {
             Evento evento = new Evento();
-            string query = $"SELECT * FROM bd_eventos_senailp WHERE id_evento = {id}";
+            string query = $"SELECT * FROM eventos WHERE id_eventos = {id}";
         try
             {
                 _connection.Open();
@@ -70,14 +70,14 @@ namespace api.DAO
                 {
                     if (reader.Read())
                     {
-                        Evento e = new Evento();
-                        e.IdEvento = reader.GetInt32("id_evento");
-                        e.Descricao = reader.GetString("descricao");
-                        e.TotalIngresso = reader.GetInt32("total_ingressos");
-                        e.DataEvento = reader.GetDateTime("data_evento");
-                        e.ImagemUrl = reader.GetString("imagem_url");
-                        e.Local = reader.GetString("local");
-                        e.Ativo = reader.GetInt32("ativo");
+                      
+                        evento.IdEvento = reader.GetInt32("id_eventos");
+                        evento.Descricao = reader.GetString("descricao");
+                        evento.TotalIngresso = reader.GetInt32("total_ingressos");
+                        evento.DataEvento = reader.GetDateTime("data_evento");
+                        evento.ImagemUrl = reader.GetString("imagem_url");
+                        evento.Local = reader.GetString("local");
+                        evento.Ativo = reader.GetInt32("ativo");
                     }
                 }
             }
@@ -100,19 +100,18 @@ namespace api.DAO
  
         public void CriarEvento(Evento evento)
         {
-            string query = "insert into personagem (id_evento, descricao, total_ingresso, data_evento, imagem_Url, local, ativo)" +
-                           "values (@IdEvento, @descricao, @TotalIngresso, @DataEvento, @ImagemUrl, @Local, @Ativo)";
+            string query = "insert into eventos (descricao, total_ingressos, data_evento, imagem_url, local, ativo)" +
+                           "values (@descricao, @TotalIngressos, @DataEvento, @Imagemurl, @Local, @Ativo)";
  
             try
             {
                 _connection.Open();
                 using (var command = new MySqlCommand(query, _connection))
                 {
-                    command.Parameters.AddWithValue("@IdEvento", evento.IdEvento);
-                    command.Parameters.AddWithValue("@Descricao", evento.Descricao);
-                    command.Parameters.AddWithValue("@TotalIngresso", evento.TotalIngresso);
+                    command.Parameters.AddWithValue("@descricao", evento.Descricao);
+                    command.Parameters.AddWithValue("@TotalIngressos", evento.TotalIngresso);
                     command.Parameters.AddWithValue("@DataEvento", evento.DataEvento);
-                    command.Parameters.AddWithValue("@ImagemUrl", evento.ImagemUrl);
+                    command.Parameters.AddWithValue("@Imagemurl", evento.ImagemUrl);
                     command.Parameters.AddWithValue("@Local", evento.Local);
                     command.Parameters.AddWithValue("@Ativo", evento.Ativo);
                     command.ExecuteNonQuery();
@@ -134,15 +133,14 @@ namespace api.DAO
  
         public void AtualizarEvento(int id, Evento evento)
             {
-                string query = "UPDATE evento SET" +
-                                "id_evento=@IdEvento, " +
+                string query = "UPDATE eventos SET " +
                                 "descricao=@descricao, " +
-                                "total_ingresso=@TotalIngresso, " +
+                                "total_ingressos=@TotalIngressos, " +
                                 "data_evento=@DataEvento, " +
-                                "imagem_Url=@ImagemUrl " +
-                                "local=@Local " +
+                                "imagem_url=@Imagemurl, " +
+                                "local=@Local, " +
                                 "ativo=@Ativo " +
-                                "WHERE id_evento=@id_evento";
+                                "WHERE id_eventos=@id_eventos";
  
                
                 try
@@ -150,11 +148,11 @@ namespace api.DAO
                     _connection.Open();
                     using (var command = new MySqlCommand(query, _connection))
                     {
-                    command.Parameters.AddWithValue("@IdEvento", evento.IdEvento);
-                    command.Parameters.AddWithValue("@Descricao", evento.Descricao);
-                    command.Parameters.AddWithValue("@TotalIngresso", evento.TotalIngresso);
+                    command.Parameters.AddWithValue("@id_eventos", evento.IdEvento);
+                    command.Parameters.AddWithValue("@descricao", evento.Descricao);
+                    command.Parameters.AddWithValue("@TotalIngressos", evento.TotalIngresso);
                     command.Parameters.AddWithValue("@DataEvento", evento.DataEvento);
-                    command.Parameters.AddWithValue("@ImagemUrl", evento.ImagemUrl);
+                    command.Parameters.AddWithValue("@Imagemurl", evento.ImagemUrl);
                     command.Parameters.AddWithValue("@Local", evento.Local);
                     command.Parameters.AddWithValue("@Ativo", evento.Ativo);
                     command.ExecuteNonQuery();
@@ -177,14 +175,14 @@ namespace api.DAO
          
         public void DeletarEvento (int id)
             {
-                string query = "DELETE FROM evento WHERE id_evento = @id_evento";
+                string query = "DELETE FROM eventos WHERE id_eventos = @id_eventos";
  
                 try
                 {
                     _connection.Open();
                     using(var command = new MySqlCommand(query, _connection))
                     {
-                        command.Parameters.AddWithValue("@id_evento", id);
+                        command.Parameters.AddWithValue("@id_eventos", id);
                         command.ExecuteNonQuery();
                     }
                 }

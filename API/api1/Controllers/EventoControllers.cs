@@ -59,12 +59,14 @@ namespace api.Controllers
     
         }
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{id}")]
         public IActionResult DeletarEvento(int id)
         {
             if(_eventoDAO.GetId(id) == null) return NotFound();
+
             _eventoDAO.DeletarEvento(id);
-            return NoContent();
+
+            return Ok();
 
         }    
     
