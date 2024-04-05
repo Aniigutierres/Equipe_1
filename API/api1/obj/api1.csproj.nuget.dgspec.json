@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\projetos\\GitHub\\Equipe_1\\API\\api1\\api1.csproj": {}
+    "C:\\projetos\\Equipe_1\\API\\api1\\api1.csproj": {}
   },
   "projects": {
-    "C:\\projetos\\GitHub\\Equipe_1\\API\\api1\\api1.csproj": {
+    "C:\\projetos\\Equipe_1\\API\\api1\\api1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projetos\\GitHub\\Equipe_1\\API\\api1\\api1.csproj",
+        "projectUniqueName": "C:\\projetos\\Equipe_1\\API\\api1\\api1.csproj",
         "projectName": "api1",
-        "projectPath": "C:\\projetos\\GitHub\\Equipe_1\\API\\api1\\api1.csproj",
-        "packagesPath": "C:\\Users\\Anielli.Gutierres\\.nuget\\packages\\",
-        "outputPath": "C:\\projetos\\GitHub\\Equipe_1\\API\\api1\\obj\\",
+        "projectPath": "C:\\projetos\\Equipe_1\\API\\api1\\api1.csproj",
+        "packagesPath": "C:\\Users\\rainara.vicentini\\.nuget\\packages\\",
+        "outputPath": "C:\\projetos\\Equipe_1\\API\\api1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Anielli.Gutierres\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\rainara.vicentini\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -75,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
