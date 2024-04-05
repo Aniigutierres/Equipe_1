@@ -36,7 +36,7 @@ namespace api.DAO
                         usuario.Senha = reader.IsDBNull("senha") ? "" : reader.GetString("senha");
                         usuario.Telefone = reader.IsDBNull("telefone") ? "" : reader.GetString("telefone");
                         usuario.Perfil = reader.IsDBNull("perfil") ? "" : reader.GetString("perfil");
-                        usuario.Status = reader.IsDBNull("status") ? "" :reader.GetString("status");
+                        usuario.Ativo = reader.IsDBNull("ativo") ? "" :reader.GetString("ativo");
                         usuarios.Add(usuario);
                         
                     }
@@ -78,7 +78,7 @@ namespace api.DAO
                         usuario.Senha = reader.GetString("senha");
                         usuario.Telefone = reader.GetString("telefone");
                         usuario.Perfil = reader.GetString("perfil");
-                        usuario.Status = reader.GetString("status");
+                        usuario.Ativo = reader.GetString("ativo");
                     }
                 }
             }
@@ -99,8 +99,8 @@ namespace api.DAO
         
         public void CriarUsuario(Usuario usuario)
         {
-            string query = "INSERT INTO usuario (nome_completo, email, senha, telefone, perfil, status)" +
-                        "VALUES (@NomeCompleto, @Email, @Senha, @Telefone, @Perfil, @Status)";
+            string query = "INSERT INTO usuario (nome_completo, email, senha, telefone, perfil, ativo)" +
+                        "VALUES (@NomeCompleto, @Email, @Senha, @Telefone, @Perfil, @Ativo)";
 
         
             try
@@ -113,7 +113,7 @@ namespace api.DAO
                     command.Parameters.AddWithValue("@Senha", usuario.Senha);
                     command.Parameters.AddWithValue("@Telefone", usuario.Telefone);
                     command.Parameters.AddWithValue("@Perfil", usuario.Perfil);
-                    command.Parameters.AddWithValue("@Status", usuario.Status);
+                    command.Parameters.AddWithValue("@Ativo", usuario.Ativo);
                     command.ExecuteNonQuery();
                 }
 
@@ -142,7 +142,7 @@ namespace api.DAO
                                 "senha=@Senha, " +
                                 "telefone=@Telefone, " +
                                 "perfil=@Perfil " +
-                                "status=@Status " +
+                                "ativo=@Ativo " +
                                 "WHERE id_usuario=@id_usuario";
 
                 
@@ -157,7 +157,7 @@ namespace api.DAO
                         command.Parameters.AddWithValue("@Senha", usuario.Senha);
                         command.Parameters.AddWithValue("@Telefone", usuario.Telefone);
                         command.Parameters.AddWithValue("@Perfil", usuario.Perfil);
-                        command.Parameters.AddWithValue("@Status", usuario.Status);
+                        command.Parameters.AddWithValue("@Ativo", usuario.Ativo);
                         command.ExecuteNonQuery(); 
                     }
                 }

@@ -37,7 +37,7 @@ namespace api.DAO
                         pedido.Total = reader.GetString("total");
                         pedido.Quantidade = reader.GetInt32("quantidade");
                         pedido.FormaPagamento = reader.GetString("forma_pagamento");
-                        pedido.Status = reader.GetInt32("status");
+                        pedido.Ativo = reader.GetInt32("ativo");
                         pedido.ValidacaoIdUsuario = reader.GetString("validacao_Id_Usuario");
                         listaPedidos.Add(pedido);
                        
@@ -80,7 +80,7 @@ namespace api.DAO
                         pedido.Total = reader.GetString("total");
                         pedido.Quantidade = reader.GetInt32("quantidade");
                         pedido.FormaPagamento = reader.GetString("forma_pagamento");
-                        pedido.Status = reader.GetInt32("status");
+                        pedido.Ativo = reader.GetInt32("ativo");
                         pedido.ValidacaoIdUsuario = reader.GetString("validacao_Id_Usuario");
                     }
                 }
@@ -102,8 +102,8 @@ namespace api.DAO
        
         public void CriarPedido(Pedido pedido)
         {
-            string query = "INSERT INTO pedido (idpedido, data, total, quantidade, forma_pagamento, status, validacao_id_usuario)" +
-                        "VALUES (@Idpedido, @Data, @Total, @Quantidade, @FormaPagamento, @Status, @ValidacaoIdUsuario)";
+            string query = "INSERT INTO pedido (idpedido, data, total, quantidade, forma_pagamento, ativo, validacao_id_usuario)" +
+                        "VALUES (@Idpedido, @Data, @Total, @Quantidade, @FormaPagamento, @Ativo, @ValidacaoIdUsuario)";
  
        
             try
@@ -116,7 +116,7 @@ namespace api.DAO
                     command.Parameters.AddWithValue("@Total", pedido.Total);
                     command.Parameters.AddWithValue("@Quantidade", pedido.Quantidade);
                     command.Parameters.AddWithValue("@FormaPagamento", pedido.FormaPagamento);
-                    command.Parameters.AddWithValue("@Status", pedido.Status);
+                    command.Parameters.AddWithValue("@Ativo", pedido.Ativo);
                     command.Parameters.AddWithValue("@ValidacaoIdUsuario", pedido.ValidacaoIdUsuario);
                     command.ExecuteNonQuery();
                 }
@@ -146,7 +146,7 @@ namespace api.DAO
                                 "Total=@Total, " +
                                 "Quantidade=@Quantidade, " +
                                 "FormaPagamento=@FormaPagamento " +
-                                "Status=@Status " +
+                                "Ativo=@Ativo " +
                                 "ValidacaoIdUsuario=@ValidacaoIdUsuario " +
                                 "WHERE id_usuario=@id_usuario";
  
@@ -161,7 +161,7 @@ namespace api.DAO
                     command.Parameters.AddWithValue("@Total", pedido.Total);
                     command.Parameters.AddWithValue("@Quantidade", pedido.Quantidade);
                     command.Parameters.AddWithValue("@FormaPagamento", pedido.FormaPagamento);
-                    command.Parameters.AddWithValue("@Status", pedido.Status);
+                    command.Parameters.AddWithValue("@Ativo", pedido.Ativo);
                     command.Parameters.AddWithValue("@ValidacaoIdUsuario", pedido.ValidacaoIdUsuario);
                     command.ExecuteNonQuery();
                     }
