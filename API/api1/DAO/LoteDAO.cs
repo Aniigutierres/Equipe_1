@@ -30,11 +30,12 @@ namespace api.DAO
                     {
                         Lote lote = new Lote();
                         lote.IdLote = reader.GetInt32("id_lote");
-                        lote.IdEventos = reader.GetInt32("id_eventos");
+                        lote.descricao = reader.GetString("descricao");
                         lote.ValorUnitario = reader.GetDouble("valor_unitario");
                         lote.QuantidadeTotal = reader.GetInt16("quantidade_total");
                         lote.Saldo = reader.GetInt16("saldo");
                         lote.Ativo = reader.GetInt16("ativo");
+                        lote.eventos_ideventos = reader.GetInt32("eventos_ideventos");
                         lotes.Add(lote);
                     }
                 }
@@ -67,12 +68,16 @@ namespace api.DAO
                 {
                     if (reader.Read())
                     {
+                        
                         lote.IdLote = reader.GetInt32("id_lote");
-                        lote.IdEventos = reader.GetInt32("id_eventos");
+                        lote.descricao = reader.GetString("descricao");
                         lote.ValorUnitario = reader.GetDouble("valor_unitario");
                         lote.QuantidadeTotal = reader.GetInt16("quantidade_total");
                         lote.Saldo = reader.GetInt16("saldo");
                         lote.Ativo = reader.GetInt16("ativo");
+                        lote.eventos_ideventos = reader.GetInt32("eventos_ideventos");
+                    
+                    
                     }
                 }
             }
@@ -93,19 +98,20 @@ namespace api.DAO
  
         public void CriarLote(Lote lote)
         {
-            string query = "INSERT INTO lote (id_eventos, valor_unitario, quantidade_total, saldo)" +
-                           "VALUES (@IdEventos, @ValorUnitario, @QuantidadeTotal, @Saldo)";
+            string query = "INSERT INTO lote (eventos_ideventos, valor_unitario, quantidade_total, saldo, ativo, descricao)" +
+                           "VALUES (@eventos_ideventos, @valor_unitario, @quantidade_total, @saldo, @ativo, @descricao)";
  
             try
             {
                 _connection.Open();
                 using (var command = new MySqlCommand(query, _connection))
                 {
-                    command.Parameters.AddWithValue("@IdEventos", lote.IdEventos);
-                    command.Parameters.AddWithValue("@ValorUnitario", lote.ValorUnitario);
-                    command.Parameters.AddWithValue("@QuantidadeTotal", lote.QuantidadeTotal);
-                    command.Parameters.AddWithValue("@Saldo", lote.Saldo);
-                    command.Parameters.AddWithValue("@Ativo", lote.Ativo);
+                    command.Parameters.AddWithValue("@eventos_ideventos", lote.eventos_ideventos);
+                    command.Parameters.AddWithValue("@descricao", lote.descricao);
+                    command.Parameters.AddWithValue("@valor_Unitario", lote.ValorUnitario);
+                    command.Parameters.AddWithValue("@quantidade_Total", lote.QuantidadeTotal);
+                    command.Parameters.AddWithValue("@saldo", lote.Saldo);
+                    command.Parameters.AddWithValue("@ativo", lote.Ativo);
                     command.ExecuteNonQuery();
                 }
  
@@ -127,10 +133,10 @@ namespace api.DAO
         public void AtualizarLote(int id, Lote lote)
         {
             string query = "UPDATE lote SET " +
-                            "id_eventos = @IdEventos, " +
+                            "eventos_ideventos = @eventos_ideventos, " +
                             "valor_unitario = @ValorUnitario, " +
                             "quantidade_total = @QuantidadeTotal, " +
-                            "saldo = @Saldo " +
+                            "saldo = @Saldo, " +
                             "ativo = @Ativo " +
                             "WHERE id_lote = @IdLote";
             try
@@ -139,7 +145,7 @@ namespace api.DAO
                 using (var command = new MySqlCommand(query, _connection))
                 {
                     command.Parameters.AddWithValue("@IdLote", id);
-                    command.Parameters.AddWithValue("@IdEventos", lote.IdEventos);
+                    command.Parameters.AddWithValue("@eventos_ideventos", lote.eventos_ideventos);
                     command.Parameters.AddWithValue("@ValorUnitario", lote.ValorUnitario);
                     command.Parameters.AddWithValue("@QuantidadeTotal", lote.QuantidadeTotal);
                     command.Parameters.AddWithValue("@Saldo", lote.Saldo);

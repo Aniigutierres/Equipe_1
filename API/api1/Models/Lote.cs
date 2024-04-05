@@ -10,9 +10,9 @@ namespace api.Models
     {
         [Column("id_lote")]
         public int IdLote { get; set; }
- 
-        [Column("id_eventos")]
-        public int IdEventos { get; set; }
+
+         [Column("descricao")]
+         public String descricao { get; set; }
  
         [Column("valor_unitario")]
         public double ValorUnitario { get; set; }
@@ -25,6 +25,10 @@ namespace api.Models
  
          [Column("ativo")]
         public int Ativo { get; set; }
+
+          [Column("eventos_ideventos")]
+        public int eventos_ideventos { get; set; }
+ 
        
     }
 }
