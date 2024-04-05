@@ -24,8 +24,8 @@ namespace api.models
         [Column("forma_pagamento")]
         public string? FormaPagamento { get; set; }
  
-        [Column("status")]
-        public int Status { get; set; }
+        [Column("ativo")]
+        public int Ativo { get; set; }
  
         [Column("validacao_id_usuario")]
         public string? ValidacaoIdUsuario { get; set; }
