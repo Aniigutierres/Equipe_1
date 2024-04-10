@@ -36,7 +36,7 @@ namespace api.DAO
                         usuario.Senha = reader.IsDBNull("senha") ? "" : reader.GetString("senha");
                         usuario.Telefone = reader.IsDBNull("telefone") ? "" : reader.GetString("telefone");
                         usuario.Perfil = reader.IsDBNull("perfil") ? "" : reader.GetString("perfil");
-                        usuario.Ativo = reader.IsDBNull("ativo") ? "" :reader.GetString("ativo");
+                        usuario.Ativo = reader.IsDBNull("ativo") ? -1 :reader.GetInt32("ativo");
                         usuarios.Add(usuario);
                         
                     }
@@ -78,7 +78,7 @@ namespace api.DAO
                         usuario.Senha = reader.GetString("senha");
                         usuario.Telefone = reader.GetString("telefone");
                         usuario.Perfil = reader.GetString("perfil");
-                        usuario.Ativo = reader.GetString("ativo");
+                        usuario.Ativo = reader.GetInt32("ativo");
                     }
                 }
             }
@@ -136,14 +136,14 @@ namespace api.DAO
 
             public void AtualizarUsuario(int id, Usuario usuario)
             {
-                string query = "UPDATE usuario SET" +
+                string query = "UPDATE usuario SET " +
                                 "nome_completo=@NomeCompleto, " +
                                 "email=@Email, " +
                                 "senha=@Senha, " +
                                 "telefone=@Telefone, " +
-                                "perfil=@Perfil " +
+                                "perfil=@Perfil, " +
                                 "ativo=@Ativo " +
-                                "WHERE id_usuario=@id_usuario";
+                                "WHERE id_usuario=@IdUsuario";
 
                 
                 try
